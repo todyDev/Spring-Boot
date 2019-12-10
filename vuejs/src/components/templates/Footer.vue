@@ -37,6 +37,7 @@ export default {
 <style scoped>
 .footer {
     padding-top: 10px;
+    padding-bottom: 30px;
     border-top: 1px solid #e5e5e5;
     font-size: 12px;
 }
