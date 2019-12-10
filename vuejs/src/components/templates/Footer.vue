@@ -28,10 +28,11 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFeatherAlt } from '@fortawesome/free-solid-svg-icons'
 library.add(faFeatherAlt)
-
+/* eslint-disable */
 export default {
     
 }
+/* eslint-disable */
 </script>
 
 <style scoped>
