@@ -1,4 +1,4 @@
-package tody.springboot.springbootproject.common.interceptor;
+package tody.springboot.springbootproject.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

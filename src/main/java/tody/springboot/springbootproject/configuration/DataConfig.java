@@ -1,4 +1,4 @@
-package tody.springboot.springbootproject.common.configuration;
+package tody.springboot.springbootproject.configuration;
 
 import javax.sql.DataSource;
 
