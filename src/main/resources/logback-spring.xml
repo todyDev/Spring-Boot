@@ -35,6 +35,7 @@
 
     <!-- Party Loggers -->
     <logger name="org.springframework" level="INFO" />
+    <logger name="org.apache" level="INFO" />
 
     <!-- Root Logger -->
     <root level="OFF">
