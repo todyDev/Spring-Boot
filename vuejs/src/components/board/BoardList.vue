@@ -90,6 +90,11 @@ export default {
         ],
         items: []
       }
+    },
+    created() {
+        this.$http.get('/api/getBoardList').then((resp)=>{
+            this.items = resp.data
+        })
     }
 }
 /* eslint-disable */
