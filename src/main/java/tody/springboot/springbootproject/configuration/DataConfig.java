@@ -12,6 +12,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 /**
  * DataConfig
@@ -35,8 +36,9 @@ public class DataConfig {
     @Primary
     public SqlSessionFactory sqlSessionFactory(@Qualifier("mysqlDataSource")DataSource dataSource) throws Exception{
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
-
         sessionFactoryBean.setDataSource(dataSource);
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        sessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mappers/*_mapper.xml"));
         return sessionFactoryBean.getObject();
     }
     
