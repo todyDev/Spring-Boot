@@ -62,7 +62,7 @@
 }
 .btn-page-of-number {
     float:right;
-    width:10%;
+    width:10% !important;
     margin-left:10px;
 }
 .btn-notice-hide {
