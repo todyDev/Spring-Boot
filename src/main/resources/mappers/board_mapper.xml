@@ -4,8 +4,18 @@
 
     <select id="selectBoardList" resultType="hashmap">
         <![CDATA[
-            SELECT * FROM board_table
+            SELECT 
+                IDX,
+                TITLE,
+                WRITER,
+                VEIW,
+                CREA_DATE
+            FROM
+                board_table
+            WHERE
+                DELETE_YN = 'N'
+            ORDER BY IDX DESC
         ]]>
     </select>
- 
+
 </mapper>
