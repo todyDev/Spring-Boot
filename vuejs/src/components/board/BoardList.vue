@@ -4,7 +4,7 @@
 
         <b-table-simple caption-top class="col-md-10 text-left" align="center">
             <caption>
-                <b-button size="sm" variant="outline-secondary" class="btn-write">글작성</b-button>
+                <b-button size="sm" variant="outline-secondary" class="btn-write" @click="goToWritePage">글작성</b-button>
                 <b-form-select size="sm" :value="10" :options="pageOfNumberOptions" class="btn-page-of-number">
                 <template v-slot:first>
                     <option :value="10">10개씩</option>
@@ -95,6 +95,13 @@ export default {
         this.$axios.get('/api/getBoardList').then((resp)=>{
             this.items = resp.data
         })
+    },
+    methods: {
+        goToWritePage() {
+            this.$router.push({
+                name: 'BOARD-WRITE-PAGE'
+            })
+        }
     }
 }
 /* eslint-disable */
