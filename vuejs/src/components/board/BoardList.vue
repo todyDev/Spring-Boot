@@ -34,14 +34,14 @@
 
         <b-alert show variant="light" v-if="items.length == 0">게시글이 존재하지 않습니다.</b-alert>
 
-        <b-pagination-nav pills :link-gen="linkGen" align="center" use-router></b-pagination-nav>
+        <b-pagination-nav pills align="center" use-router></b-pagination-nav>
 
         <div class="search">
             <b-form inline>
                 <label class="mr-sm-2">게시글 전체 검색</label>
                 <b-form-select class="mr-sm-2" :options="searchOptions" size="sm">
                     <template v-slot:first>
-                        <option :value="all">전체</option>
+                        <option :value="null">전체</option>
                     </template>
                 </b-form-select>
                 <b-form-input class="mr-sm-2" size="sm"></b-form-input>
