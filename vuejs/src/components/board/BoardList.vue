@@ -92,7 +92,7 @@ export default {
       }
     },
     created() {
-        this.$http.get('/api/getBoardList').then((resp)=>{
+        this.$axios.get('/api/getBoardList').then((resp)=>{
             this.items = resp.data
         })
     }
