@@ -28,7 +28,7 @@
                         :options="replyAcceptOptions"
                     ></b-form-radio-group>
                 </b-form-group>
-                <b-button type="submit" variant="primary">작성</b-button>
+                <b-button type="submit" variant="primary" v-bind:disabled="this.title == '' || this.content == '' || this.writer == ''">작성</b-button>
                 <b-button type="button" variant="secondary" @click="boardCancel">취소</b-button>
             </b-form>
         </div>
