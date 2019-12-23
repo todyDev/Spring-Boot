@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tody.springboot.springbootproject.domain.BoardVO;
 import tody.springboot.springbootproject.repository.BoardRepository;
 
 /**
@@ -20,5 +21,9 @@ public class BoardService{
     public List<Map<String, Object>> getBoardList() {
         return boardRepository.getBoardList();
     }
+
+	public void postBoard(BoardVO board) {
+        boardRepository.postBoard(board);
+	}
     
 }

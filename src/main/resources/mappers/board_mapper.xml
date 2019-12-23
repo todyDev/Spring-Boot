@@ -22,4 +22,29 @@
         ]]>
     </select>
 
+    <insert id="insertBoard" parameterType="tody.springboot.springbootproject.domain.BoardVO">
+        <![CDATA[
+            INSERT INTO board_table
+            (
+                TITLE,
+                CONTENT,
+                WRITER,
+                NOTICE,
+                OPEN,
+                REPLY,
+                CREA_DATE
+            )
+            VALUES
+            (
+                #{ title},
+                #{ content},
+                #{ writer},
+                #{ notice},
+                #{ open},
+                #{ reply},
+                SYSDATE()
+            )
+        ]]>
+    </insert>
+
 </mapper>
