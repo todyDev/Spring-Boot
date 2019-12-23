@@ -32,7 +32,7 @@
             </b-tbody>
         </b-table-simple>
 
-        <b-alert show variant="light" v-if="items.length == 0">게시글이 존재하지 않습니다.</b-alert>
+        <b-alert show variant="light" v-if="items && items.length == 0">게시글이 존재하지 않습니다.</b-alert>
 
         <b-pagination-nav pills align="center" use-router></b-pagination-nav>
 
@@ -88,7 +88,7 @@ export default {
             {value:'50', text:'50개씩'},
             {value:'100', text:'100개씩'}
         ],
-        items: []
+        items: null
       }
     },
     created() {
