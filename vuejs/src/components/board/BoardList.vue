@@ -22,11 +22,11 @@
                 </b-tr>
             </b-thead>
             <b-tbody>
-                <b-tr v-for="board in items" :key="board.BOARD_IDX" >
-                    <b-td>{{board.BOARD_IDX}}</b-td>
+                <b-tr v-for="board in items" :key="board.IDX" >
+                    <b-td>{{board.IDX}}</b-td>
                     <b-td width="50%" style="cursor:pointer;">{{board.TITLE}}</b-td>
                     <b-td>{{board.WRITER}}</b-td>
-                    <b-td>{{board.LIKE}}</b-td>
+                    <b-td>{{board.CREA_DATE}}</b-td>
                     <b-td>{{board.VIEW}}</b-td>
                 </b-tr>
             </b-tbody>
