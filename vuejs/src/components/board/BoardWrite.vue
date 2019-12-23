@@ -3,18 +3,18 @@
         <h4>BOARD-WRITE</h4>
 
         <div class="poster-write">
-            <b-form>
+            <b-form @submit.prevent="boardSubmit" method="post">
                 <b-form-group>
-                    <b-form-checkbox size="sm" class="text-left" switch>공지사항 설정</b-form-checkbox>
+                    <b-form-checkbox size="sm" class="text-left" v-model="selectedNotice" switch>공지사항 설정</b-form-checkbox>
                 </b-form-group>
                 <b-form-group>
-                    <b-form-input type="text" placeholder="제목을 입력하세요."/>
+                    <b-form-input type="text" placeholder="제목을 입력하세요." v-model="title"/>
                 </b-form-group>
                 <b-form-group>
-                    <b-form-input type="text" placeholder="작성자를 입력하세요."/>
+                    <b-form-input type="text" placeholder="작성자를 입력하세요." v-model="writer"/>
                 </b-form-group>
                 <b-form-group>
-                    <vue-editor :editorToolbar="customEditorTool" id="customVueEditor"></vue-editor>
+                    <vue-editor :editorToolbar="customEditorTool" id="customVueEditor" v-model="content"></vue-editor>
                 </b-form-group>
                 <b-form-group label="공개설정 범위:" class="text-left">
                     <b-form-radio-group
@@ -29,7 +29,7 @@
                     ></b-form-radio-group>
                 </b-form-group>
                 <b-button type="submit" variant="primary">작성</b-button>
-                <b-button type="button" variant="secondary">취소</b-button>
+                <b-button type="button" variant="secondary" @click="boardCancel">취소</b-button>
             </b-form>
         </div>
     </content>
@@ -55,13 +55,13 @@ export default {
             writer: '',
             content: '',
             selectedOpenRange: 'A',
+            selectedReplyAccept: 'Y',
             selectedNotice: false,
             openRangeOptions: [
                 {text:'전체공개',value:'A'},
                 {text:'멤버공개',value:'M'},
                 {text:'비공개',value:'S'}
             ],
-            selectedReplyAccept: 'Y',
             replyAcceptOptions: [
                 {text:'댓글 허용',value:'Y'},
                 {text:'댓글 비허용',value:'N'}
@@ -74,6 +74,35 @@ export default {
                 [{"color":[]},{"background":[]}],
                 ["blockquote","code-block","link"]
             ]
+        }
+    },
+    methods: {
+        boardSubmit() {
+            var boardData = {
+                title: this.title,
+                writer: this.writer,
+                content: this.content,
+                notice: this.selectedNotice ? 'Y' : 'N',
+                open: this.selectedOpenRange,
+                reply: this.selectedReplyAccept
+            }
+
+            this.$axios.post('/api/postBoard', boardData)
+            .then((resp)=>{
+                console.info(resp)
+                alert('글이 등록되었습니다.')
+            })
+            .catch((error)=>{
+                console.warn("post error :::: ",error)
+                alert('글쓰기에 실패했습니다.')
+            })
+
+            this.$router.push({
+                path: '/board/boardList'
+            })
+        },
+        boardCancel() {
+            this.$router.go(-1)
         }
     }
 }
