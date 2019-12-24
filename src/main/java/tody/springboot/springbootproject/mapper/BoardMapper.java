@@ -17,4 +17,6 @@ public interface BoardMapper {
 
 	void insertBoard(BoardVO board);
 
+	BoardVO selectBoardDetail(String index);
+
 }

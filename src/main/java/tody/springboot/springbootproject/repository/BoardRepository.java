@@ -26,4 +26,8 @@ public class BoardRepository {
         mapper.insertBoard(board);
 	}
 
+	public BoardVO getBoardDetail(String index) {
+		return mapper.selectBoardDetail(index);
+	}
+
 }

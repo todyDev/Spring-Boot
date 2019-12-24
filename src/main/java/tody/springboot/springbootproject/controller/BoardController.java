@@ -3,9 +3,8 @@ package tody.springboot.springbootproject.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +20,6 @@ import tody.springboot.springbootproject.service.BoardService;
 @RequestMapping("/api")
 public class BoardController {
 
-    private Log log = LogFactory.getLog(this.getClass());
-
     @Autowired
     private BoardService boardService;
 
@@ -35,6 +32,12 @@ public class BoardController {
     @PostMapping(value="/postBoard")
     public void addBoard(@RequestBody BoardVO board) throws Exception {
         boardService.postBoard(board);
+    }
+
+    @GetMapping(value="/getBoardDetail")
+    public BoardVO openBoardDetail(String index) throws Exception {
+        BoardVO board = boardService.getBoardDetail(index);
+        return board;
     }
 
 }

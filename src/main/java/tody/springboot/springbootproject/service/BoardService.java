@@ -25,5 +25,9 @@ public class BoardService{
 	public void postBoard(BoardVO board) {
         boardRepository.postBoard(board);
 	}
+
+	public BoardVO getBoardDetail(String index) {
+		return boardRepository.getBoardDetail(index);
+	}
     
 }
