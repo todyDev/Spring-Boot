@@ -24,7 +24,7 @@
             <b-tbody>
                 <b-tr v-for="board in items" :key="board.IDX" >
                     <b-td>{{board.IDX}}</b-td>
-                    <b-td width="50%" style="cursor:pointer;">{{board.TITLE}}</b-td>
+                    <b-td width="50%" style="cursor:pointer;" @click="goToContent(board.IDX)">{{board.TITLE}}</b-td>
                     <b-td>{{board.WRITER}}</b-td>
                     <b-td>{{board.CREA_DATE}}</b-td>
                     <b-td>{{board.VIEW}}</b-td>
@@ -101,7 +101,16 @@ export default {
             this.$router.push({
                 name: 'BOARD-WRITE-PAGE'
             })
+        },
+        goToContent(index) {
+            this.$router.push({
+                name: 'BOARD-DETAIL-PAGE',
+                params: {
+                    boardIdx: index
+                }
+            })
         }
+
     }
 }
 /* eslint-disable */
