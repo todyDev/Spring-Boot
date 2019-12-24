@@ -5,24 +5,24 @@ package tody.springboot.springbootproject.domain;
  */
 public class BoardVO {
 
-    public String idx;
+    public int idx;
     public String title;
     public String content;
     public String writer;
-    public String view;
-    public String like;
+    public int view;
     public String notice;
     public String open;
     public String reply;
+    public int like_cnt;
     public String delete_yn;
     public String crea_date;
     public String update_date;
 
-    public String getIdx() {
+    public int getIdx() {
         return idx;
     }
 
-    public void setIdx(String idx) {
+    public void setIdx(int idx) {
         this.idx = idx;
     }
 
@@ -42,7 +42,7 @@ public class BoardVO {
         this.content = content;
     }
 
-    public String getWrtier() {
+    public String getWriter() {
         return writer;
     }
 
@@ -50,20 +50,12 @@ public class BoardVO {
         this.writer = writer;
     }
 
-    public String getView() {
+    public int getView() {
         return view;
     }
 
-    public void setView(String view) {
+    public void setView(int view) {
         this.view = view;
-    }
-
-    public String getLike() {
-        return like;
-    }
-
-    public void setLike(String like) {
-        this.like = like;
     }
 
     public String getNotice() {
@@ -88,6 +80,14 @@ public class BoardVO {
 
     public void setReply(String reply) {
         this.reply = reply;
+    }
+
+    public int getLike_cnt() {
+        return like_cnt;
+    }
+
+    public void setLike_cnt(int like_cnt) {
+        this.like_cnt = like_cnt;
     }
 
     public String getDelete_yn() {
@@ -117,8 +117,8 @@ public class BoardVO {
     @Override
     public String toString() {
         return "BoardVO [content=" + content + ", crea_date=" + crea_date + ", delete_yn=" + delete_yn + ", idx=" + idx
-                + ", like=" + like + ", notice=" + notice + ", open=" + open + ", reply=" + reply + ", title=" + title
-                + ", update_date=" + update_date + ", view=" + view + ", writer=" + writer + "]";
+                + ", like_cnt=" + like_cnt + ", notice=" + notice + ", open=" + open + ", reply=" + reply + ", title="
+                + title + ", update_date=" + update_date + ", view=" + view + ", writer=" + writer + "]";
     }
     
 }
