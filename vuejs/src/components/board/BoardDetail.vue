@@ -71,6 +71,26 @@ export default {
             like: '',
             date: ''
         }
+    },
+    created() {
+        var boardIndex = {
+            index: this.$route.params.boardIdx
+        }
+        this.$axios.get('/api/getBoardDetail', {
+            params: boardIndex
+        })
+        .then((resp)=>{
+            console.info(resp)
+            this.title = resp.data.title
+            this.writer = resp.data.writer
+            this.content = resp.data.content
+            this.view = resp.data.view
+            this.like = resp.data.like_cnt
+            this.date = resp.data.crea_date
+        })
+        .catch((error)=>{
+            console.warn(error)
+        })
     }
 }
 /* eslint-disable */
