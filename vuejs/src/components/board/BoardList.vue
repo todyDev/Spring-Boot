@@ -5,20 +5,21 @@
         <b-table-simple caption-top class="col-md-10 text-left" align="center">
             <caption>
                 <b-button size="sm" variant="outline-secondary" class="btn-write" @click="goToWritePage">글작성</b-button>
-                <b-form-select size="sm" :value="10" :options="pageOfNumberOptions" class="btn-page-of-number">
-                <template v-slot:first>
-                    <option :value="10">10개씩</option>
-                </template>
-                </b-form-select>
+                <b-form inline class="float-right">
+                    <b-form-select size="sm"
+                        v-model="selectedPageOfNumber"
+                        :options="pageOfNumberOptions"
+                    ></b-form-select>
+                </b-form>
                 <b-form-checkbox size="sm" class="btn-notice-hide" switch>공지 숨기기</b-form-checkbox>
             </caption>
             <b-thead>
                 <b-tr>
-                    <b-th>idx</b-th>
-                    <b-th>title</b-th>
-                    <b-th>writer</b-th>
-                    <b-th>date</b-th>
-                    <b-th>view</b-th>
+                    <b-th>글번호</b-th>
+                    <b-th>제목</b-th>
+                    <b-th>작성자</b-th>
+                    <b-th>작성일</b-th>
+                    <b-th>조회수</b-th>
                 </b-tr>
             </b-thead>
             <b-tbody>
@@ -34,7 +35,11 @@
 
         <b-alert show variant="light" v-if="items && items.length == 0">게시글이 존재하지 않습니다.</b-alert>
 
-        <b-pagination-nav pills align="center" use-router></b-pagination-nav>
+        <b-pagination pills align="center"
+            v-model="currentPage"
+            :total-rows="itemsTotalRows"
+            :per-page="selectedPageOfNumber"
+        ></b-pagination>
 
         <div class="search">
             <b-form inline>
@@ -60,11 +65,6 @@
 .btn-write {
     float:left;
 }
-.btn-page-of-number {
-    float:right;
-    width:10% !important;
-    margin-left:10px;
-}
 .btn-notice-hide {
     float:right;
     top:6px;
@@ -82,18 +82,25 @@ export default {
             {value: 'content', text: '내용'},
             {value: 'writer', text: '작성자'}
         ],
+        selectedPageOfNumber: 10,
         pageOfNumberOptions:[
-            {value:'15', text:'15개씩'},
-            {value:'20', text:'20개씩'},
-            {value:'50', text:'50개씩'},
-            {value:'100', text:'100개씩'}
+            {value:10, text:'10개씩'},
+            {value:15, text:'15개씩'},
+            {value:20, text:'20개씩'},
+            {value:50, text:'50개씩'},
+            {value:100, text:'100개씩'}
         ],
-        items: null
+        items: null,
+        resultBoard: null,
+        currentPage: 1,
+        itemsTotalRows: 0
       }
     },
     created() {
         this.$axios.get('/api/getBoardList').then((resp)=>{
-            this.items = resp.data
+            this.resultBoard = resp.data
+            this.itemsTotalRows = _.size(this.resultBoard)
+            this.selectedItemList()
         })
     },
     methods: {
@@ -109,8 +116,19 @@ export default {
                     boardIdx: index
                 }
             })
+        },
+        selectedItemList() {
+            this.items = _.chunk(this.resultBoard, this.selectedPageOfNumber)[this.currentPage-1]
         }
 
+    },
+    watch: {
+        selectedPageOfNumber: function(){
+            this.selectedItemList()
+        },
+        currentPage: function(){
+            this.selectedItemList()
+        }
     }
 }
 /* eslint-disable */
