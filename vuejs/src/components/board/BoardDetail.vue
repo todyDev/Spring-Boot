@@ -6,7 +6,7 @@
                 <div class="post-meta">
                     {{date}} by <b>{{writer}}</b> | view {{view}}
                     <ul class="list-unstyled" style="margin-top:10px;">
-                        <li class="d-inline"><b-button size="sm" pill variant="outline-secondary">수정</b-button></li>
+                        <li class="d-inline"><b-button size="sm" pill variant="outline-secondary" @click="updateBoard">수정</b-button></li>
                         <li class="d-inline"><b-button size="sm" pill variant="outline-secondary">삭제</b-button></li>
                     </ul>
                 </div>
@@ -63,12 +63,24 @@
 export default {
     data() {
         return {
+            idx: '',
             title: '',
             writer: '',
             content: '',
             view: '',
             like: '',
             date: ''
+        }
+    },
+    methods: {
+        updateBoard(){
+            console.info(this.idx)
+            this.$router.push({
+                name: 'BOARD-WRITE-PAGE',
+                params: {
+                    boardIdx: this.idx
+                }
+            })
         }
     },
     created() {
@@ -80,6 +92,7 @@ export default {
         })
         .then((resp)=>{
             console.info(resp)
+            this.idx = resp.data.idx
             this.title = resp.data.title
             this.writer = resp.data.writer
             this.content = resp.data.content
