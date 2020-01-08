@@ -50,17 +50,7 @@
     <select id="selectBoardDetail" parameterType="String" resultType="tody.springboot.springbootproject.domain.BoardVO">
         <![CDATA[
             SELECT 
-                IDX,
-                TITLE,
-                WRITER,
-                CONTENT,
-                VIEW,
-                LIKE_CNT,
-                IF(
-					DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
-					DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
-					DATE_FORMAT(CREA_DATE, '%H:%i')
-				) as CREA_DATE
+                *
             FROM
                 board_table
             WHERE

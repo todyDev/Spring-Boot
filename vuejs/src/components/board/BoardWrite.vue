@@ -109,7 +109,7 @@ export default {
         var boardIndex = {
             index: this.$route.params.boardIdx
         }
-        this.$axios.get('/api/getBoardModify', {
+        this.$axios.get('/api/getBoardDetail', {
             params: boardIndex
         })
         .then((resp)=>{
