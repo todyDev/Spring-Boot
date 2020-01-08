@@ -104,6 +104,27 @@ export default {
         boardCancel() {
             this.$router.go(-1)
         }
+    },
+    created() {
+        var boardIndex = {
+            index: this.$route.params.boardIdx
+        }
+        this.$axios.get('/api/getBoardModify', {
+            params: boardIndex
+        })
+        .then((resp)=>{
+            console.info(resp)
+            this.idx = resp.data.idx
+            this.title = resp.data.title
+            this.writer = resp.data.writer
+            this.content = resp.data.content
+            this.selectedNotice = resp.data.notice
+            this.selectedOpenRange = resp.data.open
+            this.selectedReplyAccept = resp.data.reply
+        })
+        .catch((error)=>{
+            console.warn(error)
+        })
     }
 }
 /* eslint-disable */

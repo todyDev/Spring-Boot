@@ -20,7 +20,7 @@ export default new Router({
       component: BoardList
     },
     {
-      path: '/board/boardWrite',
+      path: '/board/boardWrite/:boardIdx?',
       name: 'BOARD-WRITE-PAGE',
       component: BoardWrite
     },
