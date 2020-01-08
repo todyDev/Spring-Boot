@@ -98,7 +98,7 @@ export default {
             this.content = resp.data.content
             this.view = resp.data.view
             this.like = resp.data.like_cnt
-            this.date = resp.data.crea_date
+            this.date = this.$moment().isSame(resp.data.crea_date,'day') ? this.$moment(resp.data.crea_date).format('HH:mm') : this.$moment(resp.data.crea_date).format('YY.MM.DD')
         })
         .catch((error)=>{
             console.warn(error)
