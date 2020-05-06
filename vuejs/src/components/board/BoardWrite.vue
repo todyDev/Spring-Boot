@@ -84,18 +84,31 @@ export default {
                 content: this.content,
                 notice: this.selectedNotice ? 'Y' : 'N',
                 open: this.selectedOpenRange,
-                reply: this.selectedReplyAccept
+                reply: this.selectedReplyAccept,
+                idx: this.$route.params.boardIdx
             }
 
-            this.$axios.post('/api/postBoard', boardData)
-            .then((resp)=>{
-                console.info(resp)
-                alert('글이 등록되었습니다.')
-            })
-            .catch((error)=>{
-                console.warn("post error :::: ",error)
-                alert('글쓰기에 실패했습니다.')
-            })
+            if(boardData.idx != null) {
+                this.$axios.post('/api/updateBoard', boardData)
+                .then((resp)=>{
+                    console.info(resp)
+                    alert('글이 수정되었습니다.')
+                })
+                .catch((error)=>{
+                    console.warn("post error :::: ",error)
+                    alert('글쓰기에 실패했습니다.')
+                })
+            } else {
+                this.$axios.post('/api/postBoard', boardData)
+                .then((resp)=>{
+                    console.info(resp)
+                    alert('글이 등록되었습니다.')
+                })
+                .catch((error)=>{
+                    console.warn("post error :::: ",error)
+                    alert('글쓰기에 실패했습니다.')
+                })
+            }
 
             this.$router.push({
                 path: '/board/boardList'
