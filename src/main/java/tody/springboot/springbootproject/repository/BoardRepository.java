@@ -30,4 +30,8 @@ public class BoardRepository {
 		return mapper.selectBoardDetail(index);
 	}
 
+	public void updateBoard(BoardVO board) {
+        mapper.updateBoard(board);
+	}
+
 }

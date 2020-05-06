@@ -29,5 +29,9 @@ public class BoardService{
 	public BoardVO getBoardDetail(String index) {
 		return boardRepository.getBoardDetail(index);
 	}
+
+	public void updateBoard(BoardVO board) {
+		boardRepository.updateBoard(board);
+	}
     
 }

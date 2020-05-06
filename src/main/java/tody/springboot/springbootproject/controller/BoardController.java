@@ -40,4 +40,9 @@ public class BoardController {
         return board;
     }
 
+    @PostMapping(value="/updateBoard")
+    public void modifyBoard(@RequestBody BoardVO board) throws Exception {
+        boardService.updateBoard(board);
+    }
+
 }

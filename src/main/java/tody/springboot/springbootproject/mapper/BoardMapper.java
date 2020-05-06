@@ -19,4 +19,6 @@ public interface BoardMapper {
 
 	BoardVO selectBoardDetail(String index);
 
+	void updateBoard(BoardVO board);
+
 }
