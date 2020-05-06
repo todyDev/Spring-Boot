@@ -131,9 +131,9 @@ export default {
             this.title = resp.data.title
             this.writer = resp.data.writer
             this.content = resp.data.content
-            this.selectedNotice = resp.data.notice
-            this.selectedOpenRange = resp.data.open
-            this.selectedReplyAccept = resp.data.reply
+            this.selectedNotice = resp.data.notice || false
+            this.selectedOpenRange = resp.data.open || 'A'
+            this.selectedReplyAccept = resp.data.reply || 'Y'
         })
         .catch((error)=>{
             console.warn(error)
