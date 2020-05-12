@@ -7,7 +7,7 @@
                     {{date}} by <b>{{writer}}</b> | view {{view}}
                     <ul class="list-unstyled" style="margin-top:10px;">
                         <li class="d-inline"><b-button size="sm" pill variant="outline-secondary" @click="updateBoard">수정</b-button></li>
-                        <li class="d-inline"><b-button size="sm" pill variant="outline-secondary">삭제</b-button></li>
+                        <li class="d-inline"><b-button size="sm" pill variant="outline-secondary" @click="deleteBoard">삭제</b-button></li>
                     </ul>
                 </div>
                 <div v-html="content" class="post-content"></div>
@@ -80,6 +80,23 @@ export default {
                 params: {
                     boardIdx: this.idx
                 }
+            })
+        },
+        deleteBoard(){
+            this.$axios.post('/api/postBoardDelete', {
+                idx: this.idx
+            })
+            .then((resp)=>{
+                console.info(resp)
+                alert('글이 삭제되었습니다.')
+            })
+            .catch((error)=>{
+                console.warn(error)
+                alert('삭제에 실패했습니다.')
+            })
+            
+            this.$router.push({
+                path: '/board/boardList'
             })
         }
     },
