@@ -45,4 +45,9 @@ public class BoardController {
         boardService.updateBoard(board);
     }
 
+    @PostMapping(value="/postBoardDelete")
+    public void deleteBoard(@RequestBody BoardVO board) throws Exception {
+        boardService.updateDeleteBoard(board);
+    }
+
 }

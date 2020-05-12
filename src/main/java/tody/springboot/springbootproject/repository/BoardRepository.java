@@ -34,4 +34,8 @@ public class BoardRepository {
         mapper.updateBoard(board);
 	}
 
+	public void updateDeleteBoard(BoardVO board) {
+        mapper.deleteBoard(board);
+	}
+
 }

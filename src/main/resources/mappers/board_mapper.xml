@@ -74,4 +74,14 @@
         ]]>
     </update>
 
+    <update id="deleteBoard" parameterType="tody.springboot.springbootproject.domain.BoardVO">
+        <![CDATA[
+            UPDATE board_table
+            SET
+                DELETE_YN = 'Y'
+            WHERE
+                IDX = #{ idx}
+        ]]>
+    </update>
+
 </mapper>

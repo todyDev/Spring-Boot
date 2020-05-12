@@ -33,5 +33,9 @@ public class BoardService{
 	public void updateBoard(BoardVO board) {
 		boardRepository.updateBoard(board);
 	}
+
+	public void updateDeleteBoard(BoardVO board) {
+		boardRepository.updateDeleteBoard(board);
+	}
     
 }
