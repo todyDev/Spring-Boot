@@ -11,6 +11,9 @@
 <script>
 import Header from '@/components/templates/TheHeader'
 import Footer from '@/components/templates/TheFooter'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faShareAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
+library.add(faShareAlt, faHeart)
 export default {
   name: 'App',
   components: {

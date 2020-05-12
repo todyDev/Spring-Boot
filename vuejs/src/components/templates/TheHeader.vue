@@ -8,7 +8,7 @@
 
                 <b-collapse id="nav-collapse" is-nav>
                     <b-navbar-nav>
-                        <b-nav-item>board</b-nav-item>
+                        <b-nav-item @click="goToBoardList">board</b-nav-item>
                         <b-nav-item>board2</b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-nav class="ml-auto">
@@ -19,3 +19,17 @@
         </b-navbar>
     </header>
 </template>
+
+<script>
+/* eslint-disable */
+export default {
+    methods: {
+        goToBoardList() {
+            this.$router.push({
+                name: 'BOARD-LIST-PAGE'
+            })
+        }
+    }
+}
+/* eslint-disable */
+</script>
